@@ -17,7 +17,7 @@ export function HeroSection() {
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-snug text-foreground text-balance">
               {"我是 "}
               <span className="inline-block -rotate-3 bg-highlight-pink px-3 py-1 rounded-sm text-black">
-                {"DX"}
+                {"杜鑫"}
               </span>
               {"，"}
               <br />
