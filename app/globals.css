@@ -220,15 +220,9 @@
 
 .animate-marquee {
   display: flex;
-  min-width: 100%;
-  animation: scroll-left 15s linear infinite;
+  min-width: max-content;
+  animation: scroll-left 30s linear infinite;
   will-change: transform;
-}
-
-@media (max-width: 768px) {
-  .animate-marquee {
-    animation-duration: 4s;
-  }
 }
 
 .animate-marquee:hover {

@@ -346,7 +346,7 @@ function QuestionCards() {
               </svg>
             </div>
             <p className="font-sans font-bold text-[#333] text-sm leading-tight">
-              如何训练 First <br/>Principles？
+              如何训练 First Principle<br/>Thinking？
             </p>
         </div>
       </div>
