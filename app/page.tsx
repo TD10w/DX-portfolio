@@ -1,20 +1,29 @@
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
-import { WhatIWantSection } from "@/components/what-i-want-section"
-import { NowSection } from "@/components/now-section"
-import { TabbedSection } from "@/components/tabbed-section"
+import { WhoAmISection } from "@/components/who-am-i-section"
+import { RoadmapSection } from "@/components/roadmap-section"
+import { PortfolioSection } from "@/components/portfolio-section"
+import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { ScrollAnimation } from "@/components/scroll-animation"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <NowSection />
-      <WhatIWantSection />
-      <TabbedSection />
+      <ScrollAnimation>
+        <WhoAmISection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <RoadmapSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <PortfolioSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <ContactSection />
+      </ScrollAnimation>
       <Footer />
     </main>
   )

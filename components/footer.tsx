@@ -12,7 +12,7 @@ export function Footer() {
             </span>
           </div>
           <span className="font-sans text-xs text-muted-foreground">
-            {"Designed & developed by me."}
+            {"Designed & developed by Xin D."}
           </span>
         </div>
       </div>
