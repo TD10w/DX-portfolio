@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { featuredProjects, experimentProjects, Project } from "@/lib/projects"
@@ -8,24 +7,8 @@ import { motion } from "framer-motion"
 
 const RETURN_SCROLL_KEY = "portfolio-return-scroll-y"
 const RETURN_PROJECT_KEY = "portfolio-return-project-slug"
-const RETURN_HIGHLIGHT_KEY = "portfolio-highlight-project-slug"
 
 export function PortfolioSection() {
-  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null)
-
-  useEffect(() => {
-    const slug = window.sessionStorage.getItem(RETURN_HIGHLIGHT_KEY)
-    if (!slug) return
-
-    setHighlightedSlug(slug)
-    const timeout = window.setTimeout(() => {
-      setHighlightedSlug(null)
-      window.sessionStorage.removeItem(RETURN_HIGHLIGHT_KEY)
-    }, 1800)
-
-    return () => window.clearTimeout(timeout)
-  }, [])
-
   return (
     <section id="portfolio" className="py-24 bg-background">
       <div className="mx-auto w-full max-w-6xl px-6">
@@ -49,7 +32,7 @@ export function PortfolioSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} highlighted={highlightedSlug === p.slug} />
+              <ProjectCard key={p.slug} project={p} index={i} />
             ))}
           </div>
         </div>
@@ -62,7 +45,7 @@ export function PortfolioSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {experimentProjects.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} highlighted={highlightedSlug === p.slug} />
+              <ProjectCard key={p.slug} project={p} index={i} />
             ))}
           </div>
         </div>
@@ -71,15 +54,7 @@ export function PortfolioSection() {
   )
 }
 
-function ProjectCard({
-  project,
-  index,
-  highlighted,
-}: {
-  project: Project
-  index: number
-  highlighted: boolean
-}) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const handleProjectClick = () => {
     window.sessionStorage.setItem(RETURN_SCROLL_KEY, String(window.scrollY))
     window.sessionStorage.setItem(RETURN_PROJECT_KEY, project.slug)
@@ -97,9 +72,12 @@ function ProjectCard({
           scale: 1.02,
           boxShadow: "8px 8px 0px 0px rgba(0,0,0,1)",
         }}
-        className={`group flex flex-col rounded-2xl border-2 border-foreground bg-card text-foreground p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] h-full cursor-pointer relative transition-[transform,box-shadow] duration-300 ${
-          highlighted ? "portfolio-return-highlight" : ""
-        }`}
+        whileTap={{
+          scale: 0.985,
+          y: -2,
+          boxShadow: "2px 2px 0px 0px rgba(0,0,0,1)",
+        }}
+        className="group flex flex-col rounded-2xl border-2 border-foreground bg-card text-foreground p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] h-full cursor-pointer relative transition-[transform,box-shadow] duration-300"
       >
         <div className="flex items-start justify-between mb-6">
           <motion.div
