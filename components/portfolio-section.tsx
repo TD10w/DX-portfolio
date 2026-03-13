@@ -54,8 +54,12 @@ export function PortfolioSection() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const handleProjectClick = () => {
+    window.sessionStorage.setItem("portfolio-return-scroll-y", String(window.scrollY))
+  }
+
   return (
-    <Link href={`/projects/${project.slug}`} className="block h-full">
+    <Link href={`/projects/${project.slug}`} onClick={handleProjectClick} className="block h-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -36,7 +36,7 @@ export function Navbar() {
       const targetId = href.replace("/#", "")
       const element = document.getElementById(targetId)
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
+        element.scrollIntoView({ behavior: "auto" })
       } else {
         // Fallback for cross-page navigation if needed, though we're mostly SPA
         window.location.href = href

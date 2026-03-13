@@ -2,18 +2,26 @@
 
 import { useEffect } from "react"
 
+const PORTFOLIO_SCROLL_KEY = "portfolio-return-scroll-y"
+
 export function ScrollReset() {
   useEffect(() => {
-    const { hash } = window.location
     const previousScrollRestoration = window.history.scrollRestoration
-
     window.history.scrollRestoration = "manual"
 
-    if (!hash) {
-      requestAnimationFrame(() => {
+    const savedScrollY = window.sessionStorage.getItem(PORTFOLIO_SCROLL_KEY)
+
+    requestAnimationFrame(() => {
+      if (savedScrollY !== null) {
+        window.scrollTo({ top: Number(savedScrollY), left: 0, behavior: "auto" })
+        window.sessionStorage.removeItem(PORTFOLIO_SCROLL_KEY)
+        return
+      }
+
+      if (!window.location.hash) {
         window.scrollTo({ top: 0, left: 0, behavior: "auto" })
-      })
-    }
+      }
+    })
 
     return () => {
       window.history.scrollRestoration = previousScrollRestoration

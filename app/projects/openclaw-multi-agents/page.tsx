@@ -22,7 +22,7 @@ export default function OpenClawPage() {
       <section className="pt-32 pb-16 px-6">
         <div className="mx-auto max-w-5xl">
           <Link 
-            href="/#portfolio"
+            href="/"
             scroll={false}
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
           >
