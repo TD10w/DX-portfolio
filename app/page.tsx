@@ -6,12 +6,10 @@ import { PortfolioSection } from "@/components/portfolio-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ScrollReset } from "@/components/scroll-reset"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-      <ScrollReset />
       <Navbar />
       <HeroSection />
       <ScrollAnimation>
